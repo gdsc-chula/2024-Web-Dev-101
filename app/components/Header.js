@@ -102,12 +102,12 @@ function Header() {
       </header>
 
       {/* Mobile Menu */}
-      <div className={`${isOpen ? "md:block" : "hidden"}`}>
+      <div className={`${isOpen ? "block" : "hidden"}`}>
         <nav className="bg-gray-100">
           <ul className="flex flex-col items-center gap-4 py-4">
             <li>
               <a
-                className="text-gray-600 transition hover:text-gray-400"
+                className="text-gray-500 transition hover:text-gray-500/75"
                 href="#"
               >
                 Home
@@ -115,7 +115,7 @@ function Header() {
             </li>
             <li>
               <a
-                className="text-gray-600 transition hover:text-gray-400"
+                className="text-gray-500 transition hover:text-gray-500/75"
                 href="#"
               >
                 Avatar
@@ -123,7 +123,7 @@ function Header() {
             </li>
             <li>
               <a
-                className="text-gray-600 transition hover:text-gray-400"
+                className="text-gray-500 transition hover:text-gray-500/75"
                 href="#"
               >
                 Stories
