@@ -15,7 +15,7 @@ function Header() {
           <div className="grid grid-cols-3 h-16 items-center justify-between">
             {/* Left - Logo */}
             <div className="md:flex md:items-center md:gap-12">
-              <a className="block text-teal-600" href="#">
+              <a className="block text-teal-600" href="/">
                 <img
                   className="h-12"
                   src="https://firebasestorage.googleapis.com/v0/b/gdg-chula-web-dev.appspot.com/o/Coffee%20Cup.png?alt=media&token=d91e63d1-dc03-4ff1-ba1d-d39149fd5280"
