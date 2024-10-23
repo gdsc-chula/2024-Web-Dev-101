@@ -51,11 +51,12 @@ function page() {
 
       <section className="flex flex-col gap-8 py-8">
         <h2 className="text-3xl font-bold text-gray-900 md:text-4xl text-center">
-          What's brewing in the community?
+          What&apos;s brewing in the community?
         </h2>
         <div className="w-screen h-auto grid lg:grid-cols-3 gap-4 px-8">
           {Stories.map((story) => (
             <StoryCard
+              key={story.id}
               imgSrc={story.imgSrc}
               displayName={story.displayName}
               content={story.content}
