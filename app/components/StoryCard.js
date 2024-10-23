@@ -1,6 +1,6 @@
 import React from "react";
 
-function StoryCard() {
+function StoryCard({ imgSrc, displayName, content }) {
   return (
     <div>
       <article className="rounded-xl border-2 border-foreground bg-secondary">
@@ -8,19 +8,15 @@ function StoryCard() {
           <a href="#" className="block shrink-0">
             <img
               alt=""
-              src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+              src={imgSrc}
               className="size-14 rounded-lg object-cover"
             />
           </a>
 
           <div>
-            <h3 className="font-medium sm:text-lg">Display Name</h3>
+            <h3 className="font-medium sm:text-lg">{displayName}</h3>
 
-            <p className="line-clamp-3 text-sm text-gray-700">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Accusamus, accusantium temporibus iure delectus ut totam natus
-              nesciunt ex? Ducimus, enim.
-            </p>
+            <p className="line-clamp-2 text-sm text-gray-700">{content}</p>
           </div>
         </div>
       </article>
