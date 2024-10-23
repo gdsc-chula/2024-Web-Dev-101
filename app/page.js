@@ -5,16 +5,15 @@ export default function Home() {
   return (
     <div className="h-screen flex flex-col">
       <Header className="flex-1" />
-      <section className="bg-gray-900 text-white flex-2 h-full  ">
-        <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:items-center ">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
-              Brew Conversations,
-              {/*Use block to forcefully break the line no matter the screen size*/}
-              <span className="sm:block"> Share Stories </span>
-            </h1>
+      <section className="flex-2 h-full  ">
+        <div className="mx-auto max-w-screen-xl px-4 py-8 flex flex-col lg:items-center ">
+          <img
+            class="h-auto w-auto max-w-lg mx-auto"
+            src="https://firebasestorage.googleapis.com/v0/b/gdg-chula-web-dev.appspot.com/o/Roast%26Respond%20Logo.png?alt=media&token=10539fec-4c94-4888-aaf5-72de4247141b"
+          />
 
-            <p className="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="mx-auto max-w-xl sm:text-xl/relaxed">
               Roast & Respond is a polling app that blends virtual coffee chats
               with engaging discussions. Brew conversations, share opinions, and
               gather instant feedback in a cozy, cafe-inspired space.
@@ -22,14 +21,14 @@ export default function Home() {
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <a
-                className="block w-full rounded border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
+                className="block w-full rounded border border-foreground bg-foreground px-12 py-3 text-sm font-medium text-white hover:bg-background hover:text-foreground focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
                 href="#"
               >
                 Login with Google
               </a>
 
               <a
-                className="block w-full rounded border border-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto"
+                className="block w-full rounded border border-foreground px-12 py-3 text-sm font-medium text-foreground hover:text-white hover:bg-foreground focus:outline-none focus:ring active:bg-foreground sm:w-auto"
                 href="#"
               >
                 Take a Seat First 🪑☕
