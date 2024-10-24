@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { UserAuth } from "../context/authContext";
 
 function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -8,6 +9,25 @@ function Header() {
     setIsOpen(!isOpen);
   }
   //const handleClick = () => { setIsOpen(!isOpen); };
+
+  //Day 2 Stuff : Add Login, SignOut Feature
+  const { user, googleSignIn, logOut } = UserAuth();
+  const handleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <header className="bg-white">
@@ -59,12 +79,21 @@ function Header() {
             <div>
               <div className="flex items-center justify-end gap-4">
                 <div className="sm:flex sm:gap-4">
-                  <a
-                    className="rounded-md bg-foreground px-5 py-2.5 text-sm font-medium text-white shadow"
-                    href="#"
-                  >
-                    Login
-                  </a>
+                  {user ? (
+                    <a
+                      className="rounded-md bg-background border-amber-950 border-2 px-5 py-2.5 text-sm font-medium text-foreground shadow"
+                      onClick={handleSignOut}
+                    >
+                      Sign Out
+                    </a>
+                  ) : (
+                    <a
+                      className="rounded-md bg-foreground px-5 py-2.5 text-sm font-medium text-white shadow"
+                      onClick={handleSignIn}
+                    >
+                      Login
+                    </a>
+                  )}
                 </div>
 
                 <div className="block md:hidden">

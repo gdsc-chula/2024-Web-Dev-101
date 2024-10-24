@@ -1,7 +1,32 @@
-import Image from "next/image";
+"use client";
+import { useEffect } from "react";
 import Header from "./components/Header";
-import handleLogin from "./handleLogin";
+import { UserAuth } from "./context/authContext";
+
 export default function Home() {
+  const { user, googleSignIn, logOut } = UserAuth();
+
+  useEffect(() => {
+    if (user) {
+      window.location.href = "/order";
+    }
+  }, [user]);
+
+  const handleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="h-screen flex flex-col">
       <Header className="flex-1" />
@@ -20,16 +45,25 @@ export default function Home() {
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <a
-                className="block w-full rounded border border-foreground bg-foreground px-12 py-3 text-sm font-medium text-white hover:bg-background hover:text-foreground focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
-                onClick={handleLogin}
-              >
-                Login with Google
-              </a>
+              {user ? (
+                <a
+                  className="block w-full rounded border border-foreground bg-foreground px-12 py-3 text-sm font-medium text-white hover:bg-background hover:text-foreground focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
+                  onClick={handleSignOut}
+                >
+                  Sign Out
+                </a>
+              ) : (
+                <a
+                  className="block w-full rounded border border-foreground bg-foreground px-12 py-3 text-sm font-medium text-white hover:bg-background hover:text-foreground focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
+                  onClick={handleSignIn}
+                >
+                  Login with Google
+                </a>
+              )}
 
               <a
                 className="block w-full rounded border border-foreground px-12 py-3 text-sm font-medium text-foreground hover:text-white hover:bg-foreground focus:outline-none focus:ring active:bg-foreground sm:w-auto"
-                href="#"
+                href="/stories"
               >
                 Take a Seat First 🪑☕
               </a>
