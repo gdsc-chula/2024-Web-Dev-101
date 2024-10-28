@@ -1,9 +1,8 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import StoryCard from "../components/StoryCard";
-
-
+import { getStory } from "../lib/firebase/firestore";
 const Stories = [
   {
     id: 1,
@@ -47,26 +46,19 @@ const Stories = [
   },
 ];
 
-function page() {
+function Page() {
   const [stories, setStories] = useState([]);
 
   useEffect(() => {
     const fetchStories = async () => {
-      try {
-        const response = await fetch('/api/story');
-        const data = await response.json();
-        setStories(data);
-      } catch (error) {
-        console.error('Error fetching stories:', error);
-      }
+      const fetchedStories = await getStory();
+      setStories(fetchedStories);
     };
-
     fetchStories();
   }, []);
   return (
     <div>
       <Header />
-
       <section className="flex flex-col gap-8 py-8">
         <h2 className="text-3xl font-bold text-gray-900 md:text-4xl text-center">
           What&apos;s brewing in the community?
@@ -86,4 +78,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

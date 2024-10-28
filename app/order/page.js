@@ -3,8 +3,26 @@ import React from "react";
 import Header from "../components/Header";
 import Protected from "../components/Protected";
 import { UserAuth } from "../context/authContext";
+import { createStory } from "../lib/firebase/firestore";
 function page() {
   const { user, googleSignIn, logOut } = UserAuth();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const imgSrc = user.photoURL;
+    const displayName = event.target.displayName.value;
+    const content = event.target.content.value;
+
+    const formData = {
+      ProfileImg: imgSrc,
+      DisplayName: displayName,
+      Story: content,
+    };
+
+    //console.log("Form Data:", formData);
+    await createStory(formData);
+    window.location.href = "/stories";
+  };
   return (
     <div className="h-screen flex flex-col">
       {/*
@@ -28,15 +46,17 @@ function page() {
               </p>
             </div>
 
-            <form action="#" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+            <form
+              onSubmit={handleSubmit}
+              className="mx-auto mb-0 mt-8 max-w-md space-y-4"
+            >
               <div>
-                <label htmlFor="displayName" className="sr-only">
-                  Display Name
-                </label>
+                <label className="sr-only">Display Name</label>
 
                 <div className="relative">
                   <input
-                    type="displayName"
+                    name="displayName"
+                    type="text"
                     className="w-full rounded-lg border-gray-200 bg-secondary p-4 pe-12 text-sm shadow-sm"
                     placeholder="Enter Display Name"
                   />
@@ -45,7 +65,7 @@ function page() {
 
               <div>
                 <textarea
-                  id="story"
+                  name="content"
                   className="mt-2 w-full rounded-lg border-gray-200 bg-secondary align-top shadow-sm sm:text-sm"
                   rows="4"
                   placeholder="How's your day going? Share your thoughts here."
