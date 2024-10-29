@@ -32,7 +32,7 @@ function Header() {
     <div>
       <header className="bg-white">
         <div className="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8 ">
-          <div className="grid grid-cols-3 h-16 items-center justify-between">
+          <div className="grid grid-rows-1 grid-cols-2 md:grid-cols-3 h-16 items-center justify-between">
             {/* Left - Logo */}
             <div className="md:flex md:items-center md:gap-12">
               <a className="block text-teal-600" href="/">
@@ -43,12 +43,12 @@ function Header() {
               </a>
             </div>
             {/* Center - Link menu*/}
-            <div className="block w-fit justify-self-center">
+            <div className="hidden md:block w-fit justify-self-center">
               <nav>
-                <ul className="hidden md:flex w-full items-center gap-8 text-sm">
+                <ul className="w-full flex items-center gap-8 text-sm">
                   <li>
                     <a
-                      className="text-gray-500 transition hover:text-gray-500/75"
+                      className="text-gray-500 transition hover:text-gray-500/75 "
                       href="/"
                     >
                       Home
@@ -129,8 +129,8 @@ function Header() {
           <ul className="flex flex-col items-center gap-4 py-4">
             <li>
               <a
-                className="text-gray-500 transition hover:text-gray-500/75"
-                href="#"
+                className="text-gray-500 transition hover:text-gray-500/75 "
+                href="/"
               >
                 Home
               </a>
@@ -138,15 +138,15 @@ function Header() {
             <li>
               <a
                 className="text-gray-500 transition hover:text-gray-500/75"
-                href="#"
+                href="/order"
               >
-                Avatar
+                Order
               </a>
             </li>
             <li>
               <a
                 className="text-gray-500 transition hover:text-gray-500/75"
-                href="#"
+                href="/stories"
               >
                 Stories
               </a>

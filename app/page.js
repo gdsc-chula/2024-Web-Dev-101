@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect } from "react";
 import Header from "./components/Header";
 import { UserAuth } from "./context/authContext";
@@ -33,7 +34,7 @@ export default function Home() {
       <section className="flex-2 h-full  ">
         <div className="mx-auto max-w-screen-xl px-4 py-8 flex flex-col lg:items-center ">
           <img
-            className="h-auto w-auto max-w-lg mx-auto"
+            className="h-auto w-4/5 lg:w-auto max-w-lg mx-auto"
             src="https://firebasestorage.googleapis.com/v0/b/gdg-chula-web-dev.appspot.com/o/Roast%26Respond%20Logo.png?alt=media&token=10539fec-4c94-4888-aaf5-72de4247141b"
           />
 
