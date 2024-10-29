@@ -6,6 +6,7 @@ import {
   deleteDoc,
   setDoc,
   getDocs,
+  doc
 } from "firebase/firestore";
 
 async function getStory() {
@@ -39,6 +40,23 @@ async function getStoryById(id) {
   }
 }
 
+async function getStoryLimit(limit) {
+  try {
+    const storyRef = collection(db, "stories");
+    const storySnapshot = await getDocs(storyRef);
+    const stories = storySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    // Ensure createdAt is treated as a Date or timestamp
+    stories.sort((a, b) => b.createdAt - a.createdAt);
+    return stories.slice(0, limit);
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+}
+
 async function createStory(story) {
   try {
     const storyRef = collection(db, "stories");
@@ -68,4 +86,4 @@ async function deleteStory(id) {
   }
 }
 
-export { getStory, getStoryById, createStory, updateStory, deleteStory };
+export { getStory, getStoryById, createStory, updateStory, deleteStory, getStoryLimit };

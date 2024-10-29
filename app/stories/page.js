@@ -3,56 +3,19 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import StoryCard from "../components/StoryCard";
 import { getStory } from "../lib/firebase/firestore";
-const demoStories = [
-  {
-    id: 1,
-    ProfileImg:
-      "https://www.gstatic.com/devrel-devsite/prod/v0e3f58103119c4df6fb3c3977dcfd0cb669bdf6385f895761c1853a4b0b11be9/firebase/images/touchicon-180.png",
-    DisplayName: "The Coffee Lover",
-    Story:
-      "I love coffee so much that I drink it every day. It's my favorite drink in the world!",
-  },
-  {
-    id: 2,
-    ProfileImg:
-      "https://www.gstatic.com/devrel-devsite/prod/v0e3f58103119c4df6fb3c3977dcfd0cb669bdf6385f895761c1853a4b0b11be9/firebase/images/touchicon-180.png",
-    DisplayName: "The Coffee Hater",
-    Story:
-      "I can't stand coffee. It's too bitter for my taste. I prefer tea or hot chocolate.",
-  },
-  {
-    id: 3,
-    ProfileImg:
-      "https://www.gstatic.com/devrel-devsite/prod/v0e3f58103119c4df6fb3c3977dcfd0cb669bdf6385f895761c1853a4b0b11be9/firebase/images/touchicon-180.png",
-    DisplayName: "The Coffee Addict",
-    Story:
-      "I drink coffee all day long. I can't function without it. It's like my lifeblood.",
-  },
-  {
-    id: 4,
-    ProfileImg:
-      "https://www.gstatic.com/devrel-devsite/prod/v0e3f58103119c4df6fb3c3977dcfd0cb669bdf6385f895761c1853a4b0b11be9/firebase/images/touchicon-180.png",
-    DisplayName: "The Coffee Connoisseur",
-    Story:
-      "I'm a coffee snob. I only drink the finest, most expensive coffee beans. Anything less is unacceptable.",
-  },
-  {
-    id: 5,
-    ProfileImg:
-      "https://www.gstatic.com/devrel-devsite/prod/v0e3f58103119c4df6fb3c3977dcfd0cb669bdf6385f895761c1853a4b0b11be9/firebase/images/touchicon-180.png",
-    DisplayName: "The Coffee Newbie",
-    Story:
-      "I'm just getting into coffee. I'm still trying to figure out what I like and don't like. It's a fun journey!",
-  },
-];
+
 
 function Page() {
   const [stories, setStories] = useState([]);
 
   useEffect(() => {
     const fetchStories = async () => {
-      const fetchedStories = await getStory();
-      setStories(fetchedStories);
+      // const fetchedStories = await getStory(); // if monolithic it's ok
+      const response = await fetch("/api/story");
+      const fetchedStories = await response.json();
+      await console.log(fetchedStories);
+
+      await setStories(fetchedStories);
     };
     fetchStories();
   }, []);

@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../components/Header";
 import Protected from "../components/Protected";
 import { UserAuth } from "../context/authContext";
-import { createStory } from "../lib/firebase/firestore";
+// import { createStory } from "../lib/firebase/firestore";
 function page() {
   const { user, googleSignIn, logOut } = UserAuth();
   const handleSubmit = async (event) => {
@@ -20,7 +20,15 @@ function page() {
     };
 
     //console.log("Form Data:", formData);
-    await createStory(formData);
+    // await createStory(formData); // monolithic way
+
+    const response = await fetch("/api/story", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
     window.location.href = "/stories";
   };
   return (
